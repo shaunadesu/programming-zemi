@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user =User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "アカウントを削除しました。"
+    redirect_to :root
+  end
+
   def following
     @title = "フォロー中"
     @user = User.find(params[:id])
@@ -48,6 +55,7 @@ class UsersController < ApplicationController
     @users = @user.follower_user.paginate(page: params[:page])
     render 'show_follow'
   end
+
 
   private
 

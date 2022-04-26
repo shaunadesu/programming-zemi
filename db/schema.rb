@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2022_04_25_063138) do
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "tweet_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tweet_id"], name: "index_likes_on_tweet_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
