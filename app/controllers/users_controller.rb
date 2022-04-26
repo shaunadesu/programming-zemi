@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in_user, only: [:edit, :update, :following, :followers]
+  before_action :logged_in_user, only: [:index, :edit, :update, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   
   def show 
@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:notice] = "アカウントを削除しました。"
     redirect_to :root
+  end
+
+  def index
+    @users = User.all
   end
 
   def following
