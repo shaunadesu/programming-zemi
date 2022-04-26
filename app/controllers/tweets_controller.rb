@@ -42,7 +42,7 @@ class TweetsController < ApplicationController
             @tweet = current_user.tweets.find_by(id: params[:id])
             if @tweet.nil?
                 flash[:danger] = "不正なアクセスです"
-                redirect_to root_url if @tweet.nil?
+                redirect_to root_url
             end
         end
 end
